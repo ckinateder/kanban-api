@@ -95,3 +95,62 @@ Task.findByIdAndRemove(id_to_delete)
     });
     });
 };
+
+// delete all tasks
+exports.deleteAll = (req, res) => {
+  Task.deleteMany({})
+    .then(data => {
+      res.send({
+        message: `${data.deletedCount} Tasks were removed successfully!`
+      });
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR deleting all Tasks"
+      });
+    });
+};
+
+// find all to do
+exports.findAllToDo = (req, res) => {
+  Task.find({ type: 'to do' })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR retrieving tasks."
+      });
+    });
+};
+
+// find all in progress
+exports.findAllInProgress = (req, res) => {
+  Task.find({ type: 'in progress' })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR retrieving tasks."
+      });
+    });
+};
+
+// find all done
+exports.findAllDone = (req, res) => {
+  Task.find({ type: 'done' })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR retrieving tasks."
+      });
+    });
+};
+// add methods to get priorities for each as well
