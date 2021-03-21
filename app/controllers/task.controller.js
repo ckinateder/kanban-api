@@ -32,6 +32,22 @@ exports.create = (req, res) => {
         });
 };
 
+// find one with id
+exports.findOne = (req, res) => {
+  const id = req.params.id;
+
+  Task.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "No Task with id " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "ERROR creating Task with id=" + id });
+    });
+};
 // Retrieve all Tasks from the database.
 exports.findAll = (req, res) => {
     const title = req.query.title;
@@ -56,32 +72,32 @@ exports.update = (req, res) => {
       });
     }
   
-    const id_to_update = req.params.id;
+    const id = req.params.id;
   
-    Task.findByIdAndUpdate(id_to_update, req.body, { useFindAndModify: false })
+    Task.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
       .then(data => {
         if (!data) {
           res.status(404).send({
-            message: `Couldn't update Task with id=${id_to_update}.`
+            message: `Couldn't update Task with id=${id}.`
           });
         } else res.send({ message: "Task was updated successfully." });
       })
       .catch(err => {
         res.status(500).send({
-          message: "ERROR updating Task with id=" + id_to_update
+          message: "ERROR updating Task with id=" + id
         });
       });
 };
 
 // delete task by id
 exports.delete = (req, res) => {
-const id_to_delete = req.params.id;
+const id = req.params.id;
 
-Task.findByIdAndRemove(id_to_delete)
+Task.findByIdAndRemove(id)
     .then(data => {
     if (!data) {
         res.status(404).send({
-        message: `Couldn't delete Task with id=${id_to_update}.`
+        message: `Couldn't delete Task with id=${id}.`
         });
     } else {
         res.send({
@@ -91,7 +107,7 @@ Task.findByIdAndRemove(id_to_delete)
     })
     .catch(err => {
     res.status(500).send({
-        message: "ERROR updating Task with id=" + id_to_update
+        message: "ERROR updating Task with id=" + id
     });
     });
 };
