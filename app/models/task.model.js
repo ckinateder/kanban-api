@@ -1,11 +1,10 @@
 module.exports = mongoose => {
     var schema = mongoose.Schema(
         {
-            title: String,
+            title: String, 
             type: String, // next up, in progress, done
             due: Date, // when it's due
-            status: String,
-            priority: String,
+            priority: String, // low, medium, high, for example
             description: String,
         },
         { timestamps: true }

@@ -5,21 +5,20 @@ const Task = db.tasks;
 exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
-        res.status(400).send({ message: "Content can not be empty." });
+        res.status(400).send({ message: "Body can't be empty" });
         return;
     }
 
-    // Create a Tutorial
+    // Create a Task
     const task = new Task({
         title: req.body.title,
-        type: req.body.type, // validate later
+        type: req.body.type ? req.body.type : "to do", // validate later
         due: req.body.due, // when it's due
-        status: req.body.status,
-        priority: req.body.priority,
+        priority: req.body.priority ? req.body.priority : "low",
         description: req.body.description,
     });
 
-    // Save Tutorial in the database
+    // Save Task in the database
     task
         .save(task)
         .then(data => {
@@ -28,7 +27,7 @@ exports.create = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while creating the Task."
+                    err.message || "ERROR creating Task"
             });
         });
 };
@@ -45,7 +44,31 @@ exports.findAll = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tasks."
+                    err.message || "ERROR finding all Tasks"
             });
         });
 };
+// update a task by id
+exports.update = (req, res) => {
+    if (!req.body) {
+      return res.status(400).send({
+        message: "Body can't be empty"
+      });
+    }
+  
+    const id_to_update = req.params.id;
+  
+    Task.findByIdAndUpdate(id_to_update, req.body, { useFindAndModify: false })
+      .then(data => {
+        if (!data) {
+          res.status(404).send({
+            message: `Couldn't update Task with id=${id_to_update}.`
+          });
+        } else res.send({ message: "Task was updated successfully." });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "ERROR updating Task with id=" + id_to_update
+        });
+      });
+  };
