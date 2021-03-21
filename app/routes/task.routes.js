@@ -11,10 +11,10 @@ module.exports = app => {
 
     // Update a task with id
     router.put("/:id", tasks.update);
-/**
+
     // Delete a task with id
     router.delete("/:id", tasks.delete);
-
+/**
     // delete all tasks
     router.delete("/", tasks.deleteAll); */
     // host at '/api/tasks'

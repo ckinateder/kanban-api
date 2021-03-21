@@ -71,4 +71,27 @@ exports.update = (req, res) => {
           message: "ERROR updating Task with id=" + id_to_update
         });
       });
-  };
+};
+
+// delete task by id
+exports.delete = (req, res) => {
+const id_to_delete = req.params.id;
+
+Task.findByIdAndRemove(id_to_delete)
+    .then(data => {
+    if (!data) {
+        res.status(404).send({
+        message: `Couldn't delete Task with id=${id_to_update}.`
+        });
+    } else {
+        res.send({
+        message: "Task was deleted successfully!"
+        });
+    }
+    })
+    .catch(err => {
+    res.status(500).send({
+        message: "ERROR updating Task with id=" + id_to_update
+    });
+    });
+};
