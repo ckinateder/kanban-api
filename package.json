@@ -4,8 +4,10 @@
   "description": "API for Kanban Board",
   "main": "api.js",
   "scripts": {
-    "start": "node api.js",
     "test": "mocha 'test/*test.js' --recursive",
+    "server": "node api.js",
+    "client": "npm start --prefix client",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "npm install --prefix client && npm run --prefix build"
   },
   "author": "Calvin Kinateder",
