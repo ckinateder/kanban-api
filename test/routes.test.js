@@ -39,14 +39,6 @@ describe("POST /api/tasks and add to do", function () {
       .send(attributes.id); */
     });
 });
-/**
-      const response = await request
-        .post("/api/tasks")
-        .send({ title: "test in progress", type:"in progress", description: "yayy" });
-      const response = await request
-        .post("/api/tasks")
-        .send({ title: "test done", type:"done", description: "yayyy" }); */
-
 
 describe("POST /api/tasks and add in progress", function () {
     it("adds a new task (in progress)", async function () {
