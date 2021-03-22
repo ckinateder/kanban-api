@@ -1,4 +1,4 @@
-const address = "localhost:8080"
+const address = "kanban-cjk-api.herokuapp.com"
 
 const request = require("supertest")(address);
 const expect = require("chai").expect;
