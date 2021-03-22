@@ -5,6 +5,7 @@ module.exports = mongoose => {
             type: String, // next up, in progress, done
             due: Date, // when it's due
             priority: String, // low, medium, high, for example
+            user: String, // name to be assigned to task
             description: String,
         },
         { timestamps: true }
