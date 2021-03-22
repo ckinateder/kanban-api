@@ -7,6 +7,7 @@ module.exports = mongoose => {
             priority: String, // low, medium, high, for example
             user: String, // name to be assigned to task
             description: String,
+            points: Number, // story points
         },
         { timestamps: true }
     );

@@ -16,7 +16,8 @@ exports.create = (req, res) => {
         due: req.body.due, // when it's due
         priority: req.body.priority ? req.body.priority : "low",
         description: req.body.description,
-        user: req.body.user,
+        user: req.body.user ? req.body.user : "root",
+        points: req.body.points ? req.body.points : 1,
     });
 
     // Save Task in the database
