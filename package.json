@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "API for Kanban Board",
   "main": "api.js",
-  "scripts": {    
+  "scripts": {
     "start": "node api.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha 'test/*test.js' --recursive"
   },
   "author": "Calvin Kinateder",
   "license": "ISC",
@@ -16,7 +16,11 @@
     "mongoose": "^5.12.1"
   },
   "devDependencies": {
-    "concurrently": "^6.0.0"
+    "chai": "^4.3.4",
+    "chalk": "^4.1.0",
+    "concurrently": "^6.0.0",
+    "mocha": "^8.3.2",
+    "supertest": "^6.1.3"
   },
   "engines": {
     "node": "14.x"
