@@ -5,10 +5,7 @@
   "main": "api.js",
   "scripts": {
     "test": "mocha 'test/*test.js' --recursive",
-    "server": "node api.js",
-    "client": "npm start --prefix client",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "npm install --prefix client && npm run --prefix build"
+    "start": "node api.js"
   },
   "author": "Calvin Kinateder",
   "license": "ISC",
