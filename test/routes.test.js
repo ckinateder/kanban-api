@@ -7,13 +7,8 @@ const chalk = require("chalk");
 describe("GET /api/tasks", function () {
   it("returns all tasks in the database", async function () {
     const endpoint = "/api/tasks"
-    try {
-        const response = await request.get(endpoint);
-        expect(response.status).to.eql(200);
-    }
-    catch{
-        console.log(chalk.red(`Could not connect to '${address}${endpoint}'. Did you start the server?`));
-    }
+    const response = await request.get(endpoint);
+    expect(response.status).to.eql(200);
   });
 });
 
