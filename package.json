@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node api.js",
     "test": "mocha 'test/*test.js' --recursive",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "npm install --prefix client && npm run --prefix build"
   },
   "author": "Calvin Kinateder",
   "license": "ISC",
