@@ -9,18 +9,6 @@ module.exports = app => {
     // Retrieve all tasks
     router.get("/", tasks.findAll);
 
-    // Retrieve a single task with id
-    router.get("/:id", tasks.findOne);
-    
-    // Update a task with id
-    router.put("/:id", tasks.update);
-
-    // Delete a task with id
-    router.delete("/:id", tasks.delete);
-
-    // delete all tasks
-    router.delete("/", tasks.deleteAll); 
-
     // Retrieve all tasks to do
     router.get("/todo", tasks.findAllToDo);
 
@@ -29,6 +17,18 @@ module.exports = app => {
 
     // Retrieve all tasks done
     router.get("/done", tasks.findAllDone);
+
+    // Retrieve a single task with id
+    router.get("/:id", tasks.findOne);
+
+    // Update a task with id
+    router.put("/:id", tasks.update);
+
+    // Delete a task with id
+    router.delete("/:id", tasks.delete);
+
+    // delete all tasks
+    router.delete("/", tasks.deleteAll); 
 
     // host at '/api/tasks'
     app.use('/api/tasks', router);
