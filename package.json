@@ -4,7 +4,9 @@
   "description": "API for Kanban Board",
   "main": "api.js",
   "scripts": {
-    "start": "node api.js",
+    "server": "node api.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Calvin Kinateder",
@@ -14,5 +16,8 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
   }
 }
