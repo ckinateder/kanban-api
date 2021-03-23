@@ -8,7 +8,6 @@ describe("GET /api/tasks", function () {
   it("returns all tasks in the database", async function () {
     const endpoint = "/api/tasks"
     const response = await request.get(endpoint);
-    console.log(response);
     expect(response.status).to.eql(200);
   });
 });

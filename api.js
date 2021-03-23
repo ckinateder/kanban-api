@@ -20,9 +20,6 @@ db.mongoose
 const LISTENPORT = '5001';
 
 // listen at port
-
-const whitelist = [`http://localhost:${LISTENPORT}`,'https://kanban-cjk-ui.herokuapp.com'];
-
 app.use(cors()); // use cors options that we described (url)
 
 // parse requests of content-type - application/json
@@ -33,7 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./app/routes/task.routes")(app);
 // set port, listen for requests
-const PORT = process.env.PORT || LISTENPORT;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
