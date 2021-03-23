@@ -17,7 +17,7 @@ db.mongoose
     });
 
 // change this to change listen port
-const LISTENPORT = '8081'
+const LISTENPORT = '5001'
 
 // listen at port
 var corsOptions = {
@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./app/routes/task.routes")(app);
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || LISTENPORT;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
