@@ -22,17 +22,8 @@ const LISTENPORT = '5001';
 // listen at port
 
 const whitelist = [`http://localhost:${LISTENPORT}`,'https://kanban-cjk-ui.herokuapp.com'];
-var corsOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
-   
-app.use(cors(corsOptions)); // use cors options that we described (url)
+
+app.use(cors()); // use cors options that we described (url)
 
 // parse requests of content-type - application/json
 app.use(express.json());
