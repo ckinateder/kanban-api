@@ -1,5 +1,6 @@
-const address = "kanban-cjk-api.herokuapp.com"
+require('dotenv').config();
 
+const address = process.env.TEST_API_URL;
 const request = require("supertest")(address);
 const expect = require("chai").expect;
 const chalk = require("chalk");

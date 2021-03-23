@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express"); // backend
 const cors = require("cors"); // middleware
 const app = express(); // create express
