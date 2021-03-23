@@ -15,12 +15,8 @@ db.mongoose
         console.log("Cannot connect to the kanban-board database. Quitting ...", err);
         process.exit();
     });
-
-// change this to change listen port
-const LISTENPORT = '5001';
-
-// listen at port
-app.use(cors()); // use cors options that we described (url)
+// listen at all
+app.use(cors()); 
 
 // parse requests of content-type - application/json
 app.use(express.json());
@@ -30,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 require("./app/routes/task.routes")(app);
 // set port, listen for requests
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
